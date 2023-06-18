@@ -2,17 +2,24 @@ from pymongo import MongoClient
 import kafka
 import json
 import time
-import random
+
+print("Producer Python Script Started")
 
 mongodb_uri = "mongodb+srv://yusufagac:1233131@apachekafkacdcmongodb.ss1szsn.mongodb.net/?retryWrites=true&w=majority"
 mongodb_client = MongoClient(mongodb_uri)
 mongodb_db = mongodb_client['mydatabase']
 mongodb_collection = mongodb_db['mycollection']
 
-kafka_bootstrap_servers = 'kafka:29092'
+kafka_bootstrap_servers = 'kafka:9092'
 kafka_topic = 'x'
-kafka_producer = kafka.KafkaProducer(bootstrap_servers=kafka_bootstrap_servers,
-                                     value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+
+print("Kafka producer connecting")
+try:
+    kafka_producer = kafka.KafkaProducer(bootstrap_servers=kafka_bootstrap_servers,value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+    print("Kafka producer connected")
+except Exception as e:
+    print("Kafka producer error")
+    exit(1)
 
 def send_data_to_kafka(data):
     kafka_data = {"data": data["value"]}

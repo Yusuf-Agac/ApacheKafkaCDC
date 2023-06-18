@@ -1,4 +1,11 @@
-FROM ubuntu:latest
-LABEL authors="Yusuf"
+FROM python:3.9
 
-ENTRYPOINT ["top", "-b"]
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY Subscriber.py .
+
+CMD ["python", "Subscriber.py"]
