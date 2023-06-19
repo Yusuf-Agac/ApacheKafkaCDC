@@ -1,8 +1,6 @@
 import random
-import time
 
 from kafka import KafkaConsumer
-import json
 
 print("Subscriber Python Script Started")
 
@@ -21,7 +19,7 @@ try:
     )
     print("Kafka subscriber connected")
 except Exception as e:
-    print("Kafka subscriber error")
+    print("Kafka subscriber error !!(Please Wait For Kafka To Start)!!")
     exit(1)
 
 for message in consumer:
