@@ -1,5 +1,5 @@
 # Base image
-FROM python:3.9
+FROM python:3
 
 # Set the working directory in the container
 WORKDIR /app
@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY Producer.py .
 
 # Run the Python script
-CMD ["python", "Producer.py"]
+CMD ["python", "-u", "Producer.py"]

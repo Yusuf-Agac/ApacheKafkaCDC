@@ -18,6 +18,7 @@ services:
       - 29092:29092
     environment:
       KAFKA_BROKER_ID: 1
+      AUTO_CREATE_TOPICS: true
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
@@ -34,9 +35,23 @@ services:
     networks:
       - network
 
-  subscriber:
+  subscriber1:
     depends_on:
-      - kafka
+      - producer
+    build: ./Subscriber
+    restart: always
+    networks:
+      - network
+  subscriber2:
+    depends_on:
+      - producer
+    build: ./Subscriber
+    restart: always
+    networks:
+      - network
+  subscriber3:
+    depends_on:
+      - producer
     build: ./Subscriber
     restart: always
     networks:

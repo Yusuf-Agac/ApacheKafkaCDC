@@ -3,6 +3,9 @@ import kafka
 import json
 import time
 
+import logging
+#logging.basicConfig(level=logging.DEBUG)
+
 print("Producer Python Script Started")
 
 mongodb_uri = "mongodb+srv://yusufagac:1233131@apachekafkacdcmongodb.ss1szsn.mongodb.net/?retryWrites=true&w=majority"
@@ -15,7 +18,10 @@ kafka_topic = 'x'
 
 print("Kafka producer connecting")
 try:
-    kafka_producer = kafka.KafkaProducer(bootstrap_servers=kafka_bootstrap_servers,value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+    kafka_producer = kafka.KafkaProducer(
+        bootstrap_servers=kafka_bootstrap_servers,  # Kafka broker(s)
+        value_serializer=lambda x: json.dumps(x).encode('utf-8')  # Serialize message value as bytes
+    )
     print("Kafka producer connected")
 except Exception as e:
     print("Kafka producer error")
@@ -25,7 +31,6 @@ def send_data_to_kafka(data):
     kafka_data = {"data": data["value"]}
     kafka_producer.send(kafka_topic, value=kafka_data)
     kafka_producer.flush()
-
 
 def check_new_data_in_mongodb():
     print(mongodb_collection.count_documents({}))
