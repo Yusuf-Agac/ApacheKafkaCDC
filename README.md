@@ -41,7 +41,7 @@ Please refer to the source code for more details and configuration options.
 
 ## Architecture Diagram
 
-![Architecture Diagram](images/general.png)
+![Architecture Diagram]([images/general.png](https://raw.githubusercontent.com/Yusuf-Agac/ApacheKafkaCDC/master/Images/General.png))
 
 ## Logs
 
