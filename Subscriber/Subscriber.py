@@ -1,5 +1,3 @@
-import random
-
 from kafka import KafkaConsumer
 
 print("Subscriber Python Script Started")
@@ -22,4 +20,4 @@ except Exception as e:
     exit(1)
 
 for message in consumer:
-    print("Kafka Subscriber Group Get Message: " + str(message.value))
+    print("Kafka Subscriber Get Message: " + str(message.value))

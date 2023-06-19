@@ -46,7 +46,7 @@ services:
     networks:
       - network
     environment:
-      - GROUP_ID=consumer-group-1
+      - GROUP_ID=Group-1
   subscriber2:
     depends_on:
       - producer
@@ -55,7 +55,7 @@ services:
     networks:
       - network
     environment:
-      - GROUP_ID=consumer-group-2
+      - GROUP_ID=Group-2
   subscriber3:
     depends_on:
       - producer
@@ -64,7 +64,7 @@ services:
     networks:
       - network
     environment:
-      - GROUP_ID=consumer-group-3
+      - GROUP_ID=Group-3
 
 networks:
   network:
