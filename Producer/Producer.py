@@ -30,14 +30,15 @@ except Exception as e:
 
 
 def send_data_to_kafka(data):
-    kafka_data = {"data": data["value"]}
+    kafka_data = {"message": data["value"]}
+    print("Kafka Producer Sent: " + str(kafka_data))
     kafka_producer.send(kafka_topic, value=kafka_data)
     kafka_producer.flush()
 
 
 # Check MongoDB for new data and send it to Kafka
 def check_new_data_in_mongodb():
-    print(mongodb_collection.count_documents({}))  # print number of documents in collection
+    print("MongoDB Count of Documents: " + str(mongodb_collection.count_documents({})))  # print number of documents in collection
     if mongodb_collection.count_documents({}) == 0:  # if collection is empty, insert a document
         mongodb_collection.insert_one({"value": 0})
     last_document = mongodb_collection.find_one({}, sort=[("_id", 1)])  # get the first document
@@ -51,7 +52,6 @@ def check_new_data_in_mongodb():
             last_document_id = last_document[0]["_id"]
         else:
             continue
-        print("Sent: ", last_document[0]["value"])
         send_data_to_kafka(last_document[0])  # send the new document to Kafka
 
 

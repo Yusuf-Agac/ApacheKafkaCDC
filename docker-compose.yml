@@ -45,6 +45,8 @@ services:
     restart: always
     networks:
       - network
+    environment:
+      - GROUP_ID=consumer-group-1
   subscriber2:
     depends_on:
       - producer
@@ -52,6 +54,8 @@ services:
     restart: always
     networks:
       - network
+    environment:
+      - GROUP_ID=consumer-group-2
   subscriber3:
     depends_on:
       - producer
@@ -59,6 +63,8 @@ services:
     restart: always
     networks:
       - network
+    environment:
+      - GROUP_ID=consumer-group-3
 
 networks:
   network:

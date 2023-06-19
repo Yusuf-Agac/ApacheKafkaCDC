@@ -12,7 +12,6 @@ try:
     consumer = KafkaConsumer(
         kafka_topic,  # Kafka topic to consume from
         bootstrap_servers=kafka_bootstrap_servers,  # Kafka broker(s)
-        group_id=str(random.Random(999999999)),  # Consumer group ID
         auto_offset_reset='latest',  # Start consuming from the latest offset
         enable_auto_commit=True,  # Enable automatic offset commits
         value_deserializer=lambda x: x.decode('utf-8')  # Deserialize message value as string
@@ -23,4 +22,4 @@ except Exception as e:
     exit(1)
 
 for message in consumer:
-    print(message.value)
+    print("Kafka Subscriber Group Get Message: " + str(message.value))
