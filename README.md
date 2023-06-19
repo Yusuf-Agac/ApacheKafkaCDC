@@ -40,23 +40,20 @@ The `Subscriber.py` script connects to the Kafka topic and consumes messages fro
 Please refer to the source code for more details and configuration options.
 
 ## Architecture Diagram
-
-![Architecture Diagram]([images/general.png](https://raw.githubusercontent.com/Yusuf-Agac/ApacheKafkaCDC/master/Images/General.png))
-
+![Architecture Diagram](https://raw.githubusercontent.com/Yusuf-Agac/ApacheKafkaCDC/master/Images/General.png)
 ## Logs
 
 ### Producer Log
 
-![Producer](images/Producer.png)
-
+![Producer](https://raw.githubusercontent.com/Yusuf-Agac/ApacheKafkaCDC/master/Images/Producer.png)
 ### Subscriber 1 Log
 
-![Subs1](images/Subs1.png)
+![Subs1](https://raw.githubusercontent.com/Yusuf-Agac/ApacheKafkaCDC/master/Images/Subs1.png)
 
 ### Subscriber 2 Log
 
-![Subs2](images/Subs2.png)
+![Subs2](https://raw.githubusercontent.com/Yusuf-Agac/ApacheKafkaCDC/master/Images/Subs2.png)
 
 ### Subscriber 3 Log
 
-![Subs3](images/Subs3.png)
+![Subs3](https://raw.githubusercontent.com/Yusuf-Agac/ApacheKafkaCDC/master/Images/Subs3.png)
